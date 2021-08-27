@@ -3,7 +3,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-
 // Client class captures inputs from user and sends to the client for computation via
 // a socket. After receiving the answer from the server via socket, provide to the program user
 public class Client {
