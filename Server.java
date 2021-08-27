@@ -11,7 +11,7 @@ import java.util.function.BiFunction;
 // to the client via socket
 // Server will need to be run first, then the Client class is run
 public class Server {
-    
+
     public static void main(String[] args) throws Exception {
         // Notify user the server has successfully started running
         System.out.println("Server started");
@@ -54,7 +54,7 @@ public class Server {
             String result = "";
             var apply = CALLBACKS.get(option).apply(num1, num2);
             // Send the client the result from the computation
-            out.println(apply);
+            out.println("Result is: " + apply);
         }
         // Once loop broken from 5 being entered, loop terminated, user notified
         System.out.println("Server terminated");
