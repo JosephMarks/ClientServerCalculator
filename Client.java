@@ -58,7 +58,7 @@ public class Client {
             // answer read in from the server as a string after being computed, assigned to answer variable
             String answer = in.readLine();
             // Provide user with the answer provided from server
-            System.out.println("Server says: "+answer);
+            System.out.println("Server says... "+answer);
         }
         // If option 5 was input to terminate, print status to user after while loop terminated
         System.out.println("Client terminated");
