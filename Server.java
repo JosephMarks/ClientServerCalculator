@@ -11,6 +11,11 @@ import java.util.function.BiFunction;
 // to the client via socket
 // Server will need to be run first, then the Client class is run
 public class Server {
+    // Named functions for use with BiFunction
+    private static Integer Add(Integer num1, Integer num2) { return num1 + num2; }
+    private static Integer Subtract(Integer num1, Integer num2) { return num1 - num2; }
+    private static Integer Multiply(Integer num1, Integer num2) { return num1 * num2; }
+    private static Integer Divide(Integer num1, Integer num2) { return num1 / num2; }
 
     public static void main(String[] args) throws Exception {
         // Notify user the server has successfully started running
@@ -30,12 +35,13 @@ public class Server {
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         // PrintWriter object used to send data to the client - autoflushed
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        //Initialize a Map, using lambdas to evaluate input from client
+        //Initialize a Map, using defined named functions to evaluate input from client
         Map<Integer, BiFunction<Integer, Integer, Integer>> CALLBACKS = new HashMap<>();
-            CALLBACKS.put(1, (x,y) -> x+y);
-            CALLBACKS.put(2, (x,y) -> x-y);
-            CALLBACKS.put(3, (x,y) -> x*y);
-            CALLBACKS.put(4, (x,y) -> x/y);
+            CALLBACKS.put(1, Server::Add);
+            CALLBACKS.put(2, Server::Subtract);
+            CALLBACKS.put(3, Server::Multiply);
+            CALLBACKS.put(4, Server::Divide);
+
         // While loop used unless client sends a 5 as option, will break loop below
         while (true)
         {
