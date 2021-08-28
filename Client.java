@@ -33,9 +33,18 @@ public class Client {
             System.out.println("5. Exit");
             System.out.println("Please enter an option..");
             // Option variable captured, converted from string to Integer value
-            option = Integer.parseInt(userInput.readLine());
-
-            // If any option other than 5 selected, prompt user to input values
+            // I have added a try/exception block in case someone enters value outside
+            // selection menu - will gracefully reloop to ask for appropriate input.
+            try {
+                option = Integer.parseInt(userInput.readLine());
+            } catch (Exception e) {
+                continue;
+            }
+            // If input is out of options available numerically, ask again for appropriate input
+            if (option > 5 || option < 1) {
+                continue;
+            }
+            // If appropriate option other than 5 selected, prompt user to input values
             if (option != 5) {
                 // Prompt user to input first integer, converting from string to Integer value
                 System.out.println("Enter first number");
