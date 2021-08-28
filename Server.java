@@ -15,7 +15,7 @@ public class Server {
     private static Integer Add(Integer num1, Integer num2) { return num1 + num2; }
     private static Integer Subtract(Integer num1, Integer num2) { return num1 - num2; }
     private static Integer Multiply(Integer num1, Integer num2) { return num1 * num2; }
-    private static Integer Divide(Integer num1, Integer num2) { return num1 / num2; }
+    private static float Divide(Integer num1, Integer num2) { return ((float)num1) / num2; }
 
     public static void main(String[] args) throws Exception {
         // Notify user the server has successfully started running
@@ -36,7 +36,7 @@ public class Server {
         // PrintWriter object used to send data to the client - autoflushed
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         //Initialize a Map, using defined named functions to evaluate input from client
-        Map<Integer, BiFunction<Integer, Integer, Integer>> CALLBACKS = new HashMap<>();
+        Map<Integer, BiFunction<Integer, Integer,? extends  Number>> CALLBACKS = new HashMap<>();
             CALLBACKS.put(1, Server::Add);
             CALLBACKS.put(2, Server::Subtract);
             CALLBACKS.put(3, Server::Multiply);
